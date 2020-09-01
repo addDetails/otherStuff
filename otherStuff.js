@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         addDetails
+// @name         otherStuff
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Adds additional details to websites.
+// @description  Other stuff.
 // @author       begavett
 // @match        *://*.spectator.org/*
 // @match        *://*.breitbart.com/*
