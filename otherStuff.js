@@ -51,6 +51,134 @@
 
 // Please click the Update button to activate antivirus protection on this web browser.
 
+(function() {
+    'use strict';
+
+    // List of image URLs you want to display
+    const imageUrls = [
+        "https://media.barchart.com/contributors-admin/common-images/images/Famous%20People/Image%20of%20Founder%20Elon%20Musk%20by%20Frederic%20Legrand%20-%20COMEO%20via%20Shutterstock.jpg",
+        "https://www.carbontrack.co.uk/wp-content/uploads/2025/02/Elon-Musk-Net-Worth.png",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://d.newsweek.com/en/full/2586866/elon-musk.jpg",
+        "https://www.indy100.com/media-library/elon-musk-wants-to-buy-openai-for-close-to-100b-backed-by.jpg?id=56406780&width=1200&height=600&coordinates=0%2C119%2C0%2C358",
+        "https://altiusinvestech.com/blog/wp-content/uploads/2025/02/HD-wallpaper-celebrity-elon-musk.jpg",
+        "https://247wallst.com/wp-content/uploads/2020/06/imageForEntry1-f4R.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg",
+        "https://media.cooltechzone.com/images/750w/2024/06/elon-musk-portrait.jpg"
+    ];
+
+    // Create a container for the images
+    const container = document.createElement('div');
+    container.style.display = 'flex';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.padding = '10px';
+    container.style.backgroundColor = '#f0f0f0';
+    container.style.borderBottom = '1px solid #ccc';
+
+    // Append each image to the container
+    imageUrls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.style.height = '100px';    // Adjust height as needed
+        img.style.marginRight = '10px';  // Space between images
+        container.appendChild(img);
+    });
+
+    // Insert the container at the very top of the body
+    document.body.insertBefore(container, document.body.firstChild);
+})();
+
 
 (function() {
     'use strict';
