@@ -178,8 +178,14 @@
     // Append the image to the container
     container.appendChild(img);
 
-    // Insert the container at the very top of the body
-    document.body.insertBefore(container, document.body.firstChild);
+    // Try to insert the container into the div with id="content"
+    const contentDiv = document.getElementById('content');
+    if (contentDiv) {
+        contentDiv.insertBefore(container, contentDiv.firstChild);
+    } else {
+        console.warn('Element with id "content" not found. Inserting container at the top of the body instead.');
+        document.body.insertBefore(container, document.body.firstChild);
+    }
 })();
 
 
