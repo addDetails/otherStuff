@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdBlocker
 // @namespace    https://github.com/addDetails/html
-// @version      0.0.1
+// @version      0.0.2
 // @description  Block ads when browsing websites.
 // @author       McAfee
 // @match        *://*.norton.com/*
@@ -147,6 +147,21 @@
         // Start the script
         init();
 
+    // Function to remove all video elements with both classes
+    function removeVideos() {
+        const videos = document.querySelectorAll('.jw-float-bar.jw-reset');
+        videos.forEach(video => video.remove());
+    }
+
+    // Remove videos immediately when the script runs
+    removeVideos();
+
+            // Optionally: observe the document for dynamically added video elements and remove them as they appear
+    const observer = new MutationObserver(() => {
+        removeVideos();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 
 
         // Function to insert picture
