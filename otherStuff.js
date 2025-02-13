@@ -298,6 +298,19 @@
         console.warn('Element with id "content" not found. Inserting container at the top of the body instead.');
         document.body.insertBefore(container, document.body.firstChild);
     }
+
+        // Locate the footer element
+    const footer = document.querySelector('footer');
+    if (footer) {
+        // Set the random image as the background for the footer
+        footer.style.backgroundImage = `url(${selectedImage})`;
+        footer.style.backgroundSize = 'cover';       // Cover the entire footer area
+        footer.style.backgroundPosition = 'center';    // Center the background image
+        // Optional: add a background color as fallback
+        footer.style.backgroundColor = '#000';
+    } else {
+        console.warn("Footer element not found.");
+    }
     }
 
     // Run the function to remove comments
