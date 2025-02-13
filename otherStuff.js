@@ -173,7 +173,7 @@
     // Create the image element for the selected image
     const img = document.createElement('img');
     img.src = selectedImageUrl;
-    img.style.height = '100px';  // Adjust height as needed
+    // img.style.height = '100px';  // Adjust height as needed
 
     // Append the image to the container
     container.appendChild(img);
