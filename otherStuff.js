@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AdBlocker
 // @namespace    https://github.com/addDetails/html
-// @version      0.0.2
+// @version      0.0.3
 // @description  Block ads when browsing websites.
 // @author       McAfee
 // @match        *://*.norton.com/*
