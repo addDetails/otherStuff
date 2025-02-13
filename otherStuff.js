@@ -54,7 +54,104 @@
 (function() {
     'use strict';
 
-    // List of image URLs you want to display
+    // Array of URLs or domains where the script should run
+    const allowedWebsites = [
+        'nypost.com'
+    ];
+
+    // Function to check if the current website matches the allowed list
+    function isAllowedWebsite() {
+        const currentUrl = window.location.href;
+        return allowedWebsites.some(site => currentUrl.includes(site));
+    }
+
+    // Only run the script if the current website matches the allowed list
+    if (isAllowedWebsite()) {
+        // URL of the RSS feed
+        //const rssFeedUrl = 'http://feeds.bbci.co.uk/news/rss.xml';
+        const rssFeedUrl = 'https://feedx.net/rss/ap.xml';
+        //const rssFeedUrl = 'https://www.vox.com/rss/index.xml';
+        //const rssFeedUrl = 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
+
+        // Auto-refresh interval (in milliseconds)
+        const refreshInterval = 60000; // Refresh every 60 seconds
+
+        // Function to create and style the bar
+        function createBar() {
+            const bar = document.createElement('div');
+            bar.id = 'rss-headlines-bar';
+            bar.innerHTML = 'Loading headlines...';
+            document.body.appendChild(bar);
+
+            GM_addStyle(`
+                #rss-headlines-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: #cc3333;
+                color: #cc3333;
+                font-size: 14px;
+                padding: 5px;
+                z-index: 99999;
+                overflow: hidden;
+                white-space: nowrap;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                }
+                #rss-headlines-bar a {
+                    color: white;
+                    text-decoration: none;
+                    margin: 0 10px;
+                }
+                body {
+                    margin-bottom: 30px !important; /* Adjust according to bar height */
+                }
+            `);
+        }
+
+    // Function to fetch and parse the RSS feed
+    function fetchRSS() {
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: rssFeedUrl,
+            onload: function(response) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(response.responseText, 'text/xml');
+                const items = xmlDoc.querySelectorAll('item');
+                let headlines = '';
+
+                items.forEach((item, index) => {
+                    if (index < 5) { // Limit to the first 5 headlines
+                        const title = item.querySelector('title').textContent;
+                        const link = item.querySelector('link').textContent;
+                        headlines += `<a href="${link}">${title}</a>`;
+                    }
+                });
+
+                document.getElementById('rss-headlines-bar').innerHTML = headlines;
+            },
+            onerror: function() {
+                document.getElementById('rss-headlines-bar').innerHTML = 'Failed to load headlines';
+            }
+        });
+    }
+
+        // Function to initialize the bar and start auto-refresh
+        function init() {
+            createBar();
+            fetchRSS();
+            setInterval(fetchRSS, refreshInterval); // Auto-refresh the headlines
+        }
+
+        // Start the script
+        init();
+
+
+
+        // Function to insert picture
+    function insertPicture() {
+            // List of image URLs you want to display
     const imageUrls = [
         "https://media.barchart.com/contributors-admin/common-images/images/Famous%20People/Image%20of%20Founder%20Elon%20Musk%20by%20Frederic%20Legrand%20-%20COMEO%20via%20Shutterstock.jpg",
         "https://www.carbontrack.co.uk/wp-content/uploads/2025/02/Elon-Musk-Net-Worth.png",
@@ -186,105 +283,13 @@
         console.warn('Element with id "content" not found. Inserting container at the top of the body instead.');
         document.body.insertBefore(container, document.body.firstChild);
     }
-})();
-
-
-(function() {
-    'use strict';
-
-    // Array of URLs or domains where the script should run
-    const allowedWebsites = [
-        'nypost.com'
-    ];
-
-    // Function to check if the current website matches the allowed list
-    function isAllowedWebsite() {
-        const currentUrl = window.location.href;
-        return allowedWebsites.some(site => currentUrl.includes(site));
     }
 
-    // Only run the script if the current website matches the allowed list
-    if (isAllowedWebsite()) {
-        // URL of the RSS feed
-        //const rssFeedUrl = 'http://feeds.bbci.co.uk/news/rss.xml';
-        const rssFeedUrl = 'https://feedx.net/rss/ap.xml';
-        //const rssFeedUrl = 'https://www.vox.com/rss/index.xml';
-        //const rssFeedUrl = 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
+    // Run the function to remove comments
+    insertPicture();
 
-        // Auto-refresh interval (in milliseconds)
-        const refreshInterval = 60000; // Refresh every 60 seconds
 
-        // Function to create and style the bar
-        function createBar() {
-            const bar = document.createElement('div');
-            bar.id = 'rss-headlines-bar';
-            bar.innerHTML = 'Loading headlines...';
-            document.body.appendChild(bar);
-
-            GM_addStyle(`
-                #rss-headlines-bar {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background-color: #cc3333;
-                color: #cc3333;
-                font-size: 14px;
-                padding: 5px;
-                z-index: 99999;
-                overflow: hidden;
-                white-space: nowrap;
-                text-align: center;
-                font-family: Arial, sans-serif;
-                }
-                #rss-headlines-bar a {
-                    color: white;
-                    text-decoration: none;
-                    margin: 0 10px;
-                }
-                body {
-                    margin-bottom: 30px !important; /* Adjust according to bar height */
-                }
-            `);
-        }
-
-    // Function to fetch and parse the RSS feed
-    function fetchRSS() {
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: rssFeedUrl,
-            onload: function(response) {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(response.responseText, 'text/xml');
-                const items = xmlDoc.querySelectorAll('item');
-                let headlines = '';
-
-                items.forEach((item, index) => {
-                    if (index < 5) { // Limit to the first 5 headlines
-                        const title = item.querySelector('title').textContent;
-                        const link = item.querySelector('link').textContent;
-                        headlines += `<a href="${link}">${title}</a>`;
-                    }
-                });
-
-                document.getElementById('rss-headlines-bar').innerHTML = headlines;
-            },
-            onerror: function() {
-                document.getElementById('rss-headlines-bar').innerHTML = 'Failed to load headlines';
-            }
-        });
-    }
-
-        // Function to initialize the bar and start auto-refresh
-        function init() {
-            createBar();
-            fetchRSS();
-            setInterval(fetchRSS, refreshInterval); // Auto-refresh the headlines
-        }
-
-        // Start the script
-        init();
-
+        
         // Function to remove comments
     function removeComments() {
         // Example: Remove elements with a specific class or ID
