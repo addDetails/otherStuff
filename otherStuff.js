@@ -38,7 +38,6 @@
 // @match        *://*.Canva.com/*
 // @match        *://*.spectator.org/*
 // @match        *://*nypost.com/*
-// @match        *://*.historicfolsom.org/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @run-at       document-idle
