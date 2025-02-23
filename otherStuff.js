@@ -266,7 +266,8 @@
         "https://cdn.cnn.com/cnnnext/dam/assets/210107120929-elon-musk-mclaren-f1-1999-vault-super-169.jpg",
         "https://startupnews.fyi/wp-content/uploads/2025/02/STK022_ELON_MUSK_CVIRGINIA_F-1068x558.jpg",
         "https://images.fastcompany.com/image/upload/f_webp,q_auto,c_fit/wp-cms-2/2025/02/p-1-OpenAI-receives-unasked-for-bid-from-Elon-Musk-led-investor-group-for-its-non-profit-assets.jpg",
-        "https://cdn.fusionchat.ai/blog/chatgpt/elon-musk-leads-an-offer-to-buy-chatgpt-s-parent-company-for-----t1z0pirn9a951v2cp33g2m.png"
+        "https://cdn.fusionchat.ai/blog/chatgpt/elon-musk-leads-an-offer-to-buy-chatgpt-s-parent-company-for-----t1z0pirn9a951v2cp33g2m.png",
+        "https://media.gettyimages.com/id/476317939/photo/2014-vanity-fair-oscar-party-hosted-by-graydon-carter-inside.jpg?s=2048x2048&w=gi&k=20&c=FCLhE2J0Qb3sTdAdJNY1ljedK5DfHpwqorkOHwEqziE="
     ];
 
  // Select one random image from the array
